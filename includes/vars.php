@@ -1,0 +1,15 @@
+<?php
+//Circle
+$category_circle = 'ÅÜÈ¦';
+//µ¥¸Ü
+$category_1 = 'ÕýÊÖ';
+$category_2 = '·´ÊÖ';
+$category_3 = 'Ç°·­';
+//Ë«¸Ü
+$category_4 = '³Å';
+
+//more
+$category_5 = '¸©ÎÔ³Å';
+$category_6 = 'ÑöÎÔÆð×ø'; 
+
+?>

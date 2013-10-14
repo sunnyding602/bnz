@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Designer</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <style type="text/css"> 
+            body { background:gray; margin:0; overflow:hidden }
+            #panel { position:absolute; font-family:Helvetica, Arial; font-size:13px; color:#606060; background:#fff; border-right:1px solid #ddd; float:left;
+                    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);/*ie*/
+                    -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+                    -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+                    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+                 }
+            #container { position:absolute; top:0; left:0 }
+            #canvas { position:absolute; }
+            a { color:#404040; cursor:pointer; text-decoration:underline } 
+            a:hover { text-decoration:none; background:#b3b3b3 }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <div id="container"></div>
+        <div id="panel">
+            <table style="width: 100%; height: 10%; padding: 10px;">
+                <tr><td>
+                <!-- todo::yy 取色最好换成调色板 -->
+                Colors: <ul>
+                        	<li><a color="  0,   0,   0" onClick="setColor(this)">Black</a></li>
+                        	<li><a color="255, 255, 255" onClick="setColor(this)">White</a></li>
+                        	<li><a color=" 76, 142, 250" onClick="setColor(this)">Blue</a></li>
+                        	<li><a color="146,  39, 143" onClick="setColor(this)">Purple</a></li>
+                        	<li><a color="254, 242,   0" onClick="setColor(this)">Yellow</a></li>
+                        	<li><a color="250,   0,  51" onClick="setColor(this)">Red</a></li>
+                        </ul>
+                Width: <input type="range" min="10" max="100" value="30" onchange="setWidth(this)" />
+                Fade: <input type="range" min="1" max="10" value="8" onchange="setFade(this)" />
+                Move: <font>[Space] + Drag</font><br />
+                Save: <a onclick="saveDrawing()">Click Here</a>
+                </td></tr>
+            </table>
+        </div>
+        <script type="text/javascript">
+            var mouseX = 0, mouseY = 0, oldMouseX = 0, oldMouseY = 0, mouseDown = false,
+            spaceKeyDown = false, panning = false, mouseXOnPan = 0, mouseYOnPan = 0, canvasXOnPan = 0, canvasYOnPan = 0;
+
+            var PANEL_WIDTH = 180, SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight, CANVAS_WIDTH = 2048, CANVAS_HEIGHT = 2048;
+
+            var COLOR = '0, 0, 0', FADE = 0.8;
+
+            var panel = document.getElementById( 'panel' );
+            panel.style.width = PANEL_WIDTH + 'px';
+
+            var container = document.getElementById( 'container' );
+            container.style.left = PANEL_WIDTH + 'px';
+            container.addEventListener( 'mouseover', function( event ) { event.preventDefault(); }, false );
+            container.addEventListener( 'mousedown', function( event ) { event.preventDefault(); }, false );
+
+            var canvas = document.getElementById( 'canvas' );
+            canvas.width = CANVAS_WIDTH;
+            canvas.height = CANVAS_HEIGHT;
+            canvas.style.left = PANEL_WIDTH + 'px';
+            canvas.addEventListener( 'mousedown', onCanvasMouseDown, false );
+
+            var context = canvas.getContext( '2d' );
+            context.lineWidth = 0.6;
+            context.fillStyle = 'rgb(255, 255, 255)';
+            context.fillRect( 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT );
+
+            document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+            document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+            document.addEventListener( 'keydown', onDocumentKeyDown, false );
+            document.addEventListener( 'keyup', onDocumentKeyUp, false );
+
+            window.addEventListener( 'resize', onWindowResize, false );
+            onWindowResize();
+
+            function onCanvasMouseDown( event ) {
+                event.preventDefault();
+                if ( spaceKeyDown ) {
+                    panning = true;
+                    mouseXOnPan = event.clientX;
+                    mouseYOnPan = event.clientY;
+                    canvasXOnPan = canvas.offsetLeft;
+                    canvasYOnPan = canvas.offsetTop;
+                    return;
+                }
+                mouseDown = true;
+                mouseX = event.clientX - canvas.offsetLeft;
+                mouseY = event.clientY - canvas.offsetTop;
+            }
+
+            function onDocumentMouseUp( event ) {
+                panning = false;
+                mouseDown = false;
+            }
+
+            function onDocumentMouseMove( event ) {
+                if ( panning ) {
+                    canvas.style.left = ( event.clientX - mouseXOnPan + canvasXOnPan ) + 'px';
+                    canvas.style.top = ( event.clientY - mouseYOnPan + canvasYOnPan ) + 'px';
+                    container.style.left = ( event.clientX - mouseXOnPan + canvasXOnPan ) + 'px';
+                    container.style.top = ( event.clientY - mouseYOnPan + canvasYOnPan ) + 'px';
+                }
+                oldMouseX = mouseX;
+                oldMouseY = mouseY;
+                mouseX = event.clientX - canvas.offsetLeft;
+                mouseY = event.clientY - canvas.offsetTop;
+                if ( mouseDown ) {
+                    draw( oldMouseX, oldMouseY, mouseX, mouseY );
+                }
+            }
+
+            function onDocumentKeyDown( event ) {
+                switch( event.keyCode ) {
+                    case 32: 
+                        spaceKeyDown = true;
+                        document.getElementsByTagName('font')[0].innerHTML = 'Drag';
+                        break;
+                }
+            }
+
+            function onDocumentKeyUp( event ) {
+                switch( event.keyCode ) {
+                    case 32:
+                        spaceKeyDown = false;
+                        document.getElementsByTagName('font')[0].innerHTML = '[Space] + Drag';
+                        break;
+                }
+            }
+
+            function onWindowResize( event ) {
+                SCREEN_HEIGHT = window.innerHeight;
+                panel.style.height = SCREEN_HEIGHT + 'px';
+            }
+
+            function draw( x1, y1, x2, y2 ) {
+                var dx  = x2 - x1,
+                dy = y2 - y1,
+                d = Math.sqrt( dx * dx + dy * dy ) * 0.02;
+
+                context.strokeStyle = 'rgba( ' + COLOR + ', ' + ( FADE - d )  + ')' ;
+                context.beginPath();
+                context.moveTo( x1, y1 );
+                context.lineTo( x2, y2 );
+                context.closePath();
+                context.stroke();
+            }
+
+            function setColor( obj ) {
+                var a = document.getElementsByTagName( 'a' );
+                for ( i=0; i<a.length; i++ ) a[i].style.color = 'rgb( 40, 40, 40 )';
+                COLOR =  obj.getAttribute( 'color' );
+                obj.style.color = 'rgb(' + COLOR + ')';
+            }
+
+            function setWidth( obj ) {
+                context.lineWidth = obj.value/50;
+            }
+
+            function setFade( obj ) {
+                FADE = obj.value/10;
+            }
+
+            function saveDrawing() {
+                if ( window.sf_win ) window.sf_win.close();
+                window.sf_win = window.open( 'Right click to save', Math.random() * Math.random(), '' );
+                window.sf_win.document.write( "<body style='background-color:#ddd;'><img id='img' width='800px' onclick='sync_img()'><script>document.title='Right click to save';function sync_img(){document.getElementById('img').src=opener.canvas.toDataURL( 'image/png' );};sync_img();<\/script>" );
+            }
+        </script>
+    </body>
+</html>

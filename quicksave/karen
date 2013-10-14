@@ -1,0 +1,32 @@
+<records>
+ <solution>
+  <user_info_id>0</user_info_id>
+  <category_circle>0</category_circle>
+  <category_1>0</category_1>
+  <category_2>0</category_2>
+  <category_3>0</category_3>
+  <category_4>0</category_4>
+  <category_5>0</category_5>
+  <category_6>0</category_6>
+ </solution>
+ <solution>
+  <user_info_id>karen</user_info_id>
+  <category_circle/>
+  <category_1/>
+  <category_2/>
+  <category_3/>
+  <category_4/>
+  <category_5/>
+  <category_6/>
+ </solution>
+ <solution>
+  <user_info_id>karen</user_info_id>
+  <category_circle></category_circle>
+  <category_1></category_1>
+  <category_2></category_2>
+  <category_3></category_3>
+  <category_4></category_4>
+  <category_5></category_5>
+  <category_6></category_6>
+ </solution>
+</records>

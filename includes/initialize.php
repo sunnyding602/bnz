@@ -1,0 +1,10 @@
+<?php
+@session_start();
+require_once(SITE_ROOT_PATH.'includes/database.php');
+require_once(SITE_ROOT_PATH.'includes/functions.php');
+require_once(SITE_ROOT_PATH.'includes/pagination.php');
+require_once(SITE_ROOT_PATH.'includes/PHPMailer_v5.0.0/class.phpmailer.php');
+require_once(SITE_ROOT_PATH.'includes/PHPMailer_v5.0.0/class.smtp.php');
+require_once(SITE_ROOT_PATH.'includes/PHPMailer_v5.0.0/language/phpmailer.lang-zh_cn.php');
+require_once(SITE_ROOT_PATH.'libweibo/config.php');
+require_once(SITE_ROOT_PATH.'libweibo/saetv2.ex.class.php');

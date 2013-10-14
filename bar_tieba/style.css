@@ -1,0 +1,117 @@
+@charset "utf-8";
+/*CSS shorthand used throughout*/
+/*HTML tag style*/
+body,td,th {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 0.9em;
+	color: #333;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #A3D8FF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+form label {
+  display: inline-block;
+  width: 70px;
+  font-weight: bold;
+}
+hr {
+	border-bottom-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: dashed;
+	border-left-style: none;
+	border-bottom-color: #0000FF;
+}
+h1 {
+	color: #c28c3c;
+}
+h2 {
+	font-variant: small-caps;
+	margin-left: 10px;
+}
+h3 {
+	font-weight: normal;
+	font-variant: small-caps;
+	margin-left: 20px;
+}
+p, ul, ol, dl {
+	margin: 0px 20px 7px;
+}
+h1, h2, h3 {
+	margin-top: 0px;
+	margin-bottom: 0.6em;
+	padding-left: 20px;
+}
+img {
+	margin: 0px;
+	padding: 0px;
+}
+ul {
+	font-style: italic;
+	list-style: circle;
+}
+
+/*appear this order*/
+a:link {
+	color: #663b18;
+	text-decoration: none;
+}
+a:visited {
+	color: #663b18;
+	text-decoration: none;
+}
+a:hover {
+	color: #ae833e;
+	text-decoration: underline;
+}
+a:active {
+	color: #663b18;
+	text-decoration: none;
+}
+/*Class style*/
+.message {
+	color: #390;
+	font-weight: bold;
+}
+.boldWord {
+	font-weight: bold;
+	color: #930;
+}
+.hiLite {
+	font-style: italic;
+	color: #d30;
+}
+.blue {
+	color: #06F;
+}
+/*div id styles can be apply only once per page*/
+.content {
+	margin: 0px auto;
+	width: 800px;
+	background: #FFF;
+	text-align: left;
+	padding: 20px;
+}
+.footer {
+	background: #A3D8FF;
+	text-align: center;
+	padding: 2px 0px;
+	margin: 0px;
+}
+
+
+.haha {
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #5F89D8;
+}
+
+

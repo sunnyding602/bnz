@@ -1,0 +1,32 @@
+<records>
+ <solution>
+  <user_info_id>qiao</user_info_id>
+  <category_circle>0</category_circle>
+  <category_1>0</category_1>
+  <category_2>0</category_2>
+  <category_3>0</category_3>
+  <category_4>0</category_4>
+  <category_5>0</category_5>
+  <category_6>0</category_6>
+ </solution>
+ <solution>
+  <user_info_id>qiao</user_info_id>
+  <category_circle>1</category_circle>
+  <category_1>2</category_1>
+  <category_2>3</category_2>
+  <category_3>4</category_3>
+  <category_4>5</category_4>
+  <category_5>0</category_5>
+  <category_6>0</category_6>
+ </solution>
+ <solution>
+  <user_info_id>qiao</user_info_id>
+  <category_circle>1</category_circle>
+  <category_1>8</category_1>
+  <category_2>4</category_2>
+  <category_3>5</category_3>
+  <category_4>7</category_4>
+  <category_5>9</category_5>
+  <category_6>0</category_6>
+ </solution>
+</records>

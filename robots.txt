@@ -1,0 +1,9 @@
+# robots.txt for http://www.bunengzhai.cn/
+
+User-agent: *
+Disallow: /bar_admin/ 
+Disallow: /admin/ 
+Disallow: /credentials/
+Disallow: /includes/
+Disallow: /android/
+Disallow: /api/

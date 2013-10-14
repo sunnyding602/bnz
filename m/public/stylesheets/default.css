@@ -1,0 +1,312 @@
+body{
+	margin:0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;
+}
+body,td,input,textarea{
+	font-family:arial,Helvetica,sans-serif;
+}
+body.font_12{
+	font-size:12px;
+}
+body.font_14{
+	font-size:14px;
+}
+ul,li{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+div,p{
+	margin:0;
+	padding:0 3px;
+	line-height:1.4em;
+}
+p{
+	padding:2px 0;
+}
+a{
+	color:#005EAC;
+	text-decoration:none
+}
+a:hover{
+	color:#fff;
+	background:#005EAC
+}
+#logo{
+	background:#005EAC url(http://s.xnimg.cn/wap/logo_bg.gif) 0 0 repeat-x;
+	height:23px;
+	padding:0;
+	line-height:0;
+	overflow:hidden;
+	border-bottom:1px solid #3680BE
+}
+#logo a:hover{
+	text-decoration:none;
+	background:none;
+}
+#logo td img{
+	width:81px;
+	height:23px;
+}
+#logo table{
+	width:100%;
+}
+#logo td{
+	padding:0;
+	line-height:10px;
+	vertical-align:middle;
+}
+#logo td.top_search{
+	text-align:right;
+	padding-right:5px;
+}
+.top_search a{
+	color:#fff;
+}
+
+small{
+	color:#999;
+	font-size:12px;
+}
+form,img{
+	margin:0;
+	border:0;
+}
+.clear{
+	clear:both;
+}
+img.p{
+	border:1px solid #ccc
+}
+td{
+	vertical-align:top;
+}
+.button{
+	background:#005EAC;
+	color:#fff;
+}
+.input_large,.button_large{
+	font-size:1.2em;
+}
+.sec{
+	clear:both;
+	padding:3px;
+	border-bottom:1px solid #B8D4E8;
+}
+.sec p,#nav p,#footer p{
+	padding:1px 0;
+}
+#nav,#footer{
+	padding:3px;
+	border-bottom:1px solid #B8D4E8;
+}
+.notice{
+	padding:3px 5px;
+	background:#E3EEF8;
+	margin-bottom:1px;
+}
+.notice_message{
+	padding:3px 5px;
+	background:#FFF8CC;
+	border-bottom:1px solid #FFE222;
+	color:#EB1609;
+}
+.top_message img,.sec img{
+	vertical-align:middle;
+	margin-right:3px;
+}
+.pager img{
+	vertical-align:top;
+}
+.top_message .sec,.sec_sub{
+	border-color:#E3EEF8;
+}
+.top_message small,#nav small,.nav small,.red{
+	color:#f33 !important;
+}
+.top_message a:hover small,#nav a:hover small,.nav a:hover small{
+	color:#fff !important;
+}
+.green{
+	color:green;
+}
+.gary{
+	color:#999
+}
+.cblue{
+	color:#005EAC;
+}
+.gray{
+	color:#666;
+}
+.nav,.f_list .pager p{
+	color:#B8D4E8;
+}
+.sec p,.sec div,.sec b,.sec span,.sec table{
+	color:#000;
+}
+.nav .cur{
+	font-weight:bold;
+}
+
+.sectitle{
+	font-weight:bold;
+	padding:3px 3px 0;
+}
+.sectitle span{
+	font-weight:normal;
+}
+.pager{
+	border-bottom:1px solid #E3EEF8;
+	padding:3px;
+}
+.u_list{
+	width:100%;
+}
+.u_list .col_1{
+	width:60px;
+	text-align:center;
+}
+.u_list .col_1 img,.f_list li img,.p img{
+	border:1px solid #E3EEF8;
+	padding:2px;
+}
+.p:hover{
+	background:none;
+}
+.u_list .col_1 a:hover img, .f_list li a:hover img,.p:hover img{
+	border-color:#B8D4E8;
+}
+.u_list td{
+	border-bottom:1px solid #E3EEF8;
+}
+.page_wrap{
+	padding:2px;
+	clear:both;
+}
+.nopad{
+	padding:0;
+}
+.input_s1{
+	width:140px;
+}
+.input_s2{
+	width:120px;
+}
+.input_s3{
+	width:30px;
+}
+.f_list,.t_list{
+	padding:3px 0;
+}
+.f_list li{
+	float:left;
+	margin:3px 5px 0 0;
+}
+.dot_list{
+	margin:3px;
+}
+.dot_list li{
+	padding-left:12px;
+	line-height:1.6em;
+	background:url(http://s.xnimg.cn/wap/list_dot.gif) 2px 0.5em no-repeat;
+}
+.userProfileItem{
+	text-align:right;
+	font-weight:normal;
+}
+.gray{
+	color:#888 !important;
+}
+.gray img{
+	vertical-align:middle;
+	margin:0 2px;
+}
+.nav b,.b_title{
+	color:#005EAC;
+}
+.b_title{
+	font-size:1.2em;
+	line-height:1.6em;
+}
+.noborder{
+	border:0 !important;
+}
+
+/*for dog*/
+.dogface{
+	width:30px; 
+	height:30px; 
+	border:solid 1px #ccc; 
+	overflow:hidden;
+}
+.doginf{
+	list-style:none; 
+	margin:0; 
+	padding:0; 
+	margin-left:40px;
+}
+.doginf .dogname{
+	line-height:16px;
+}
+.playaction{
+	margin:2px 0; 
+	padding:0; 
+	border-collapse:collapse; 
+	border:0;
+}
+.playaction th{
+	font-weight:normal;
+}
+.frsplay{
+	margin-bottom:5px;
+}
+.afstatus{
+	padding:3px;
+}
+.empty{
+	visibility:hidden
+}
+.rsinf{
+	background:#FDF9CA; 
+	border-bottom:solid 1px #EADC79;
+}
+.form li{
+	padding-left:20px
+}
+.form li.hasipt{
+	padding-left:0;
+}
+.dot_list{
+	margin:3px;
+}
+.dot_list li{
+	padding-left:12px;
+	line-height:1.6em;
+	background:url(http://s.xnimg.cn/wap/list_dot.gif) 2px 0.5em no-repeat;
+}
+/*for vayage*/
+.ctitle{
+	font-weight:bold;
+	padding:3px 2px ;
+}
+.ctitle,.csec{
+	background:#E3EEF8;
+}
+/*other app*/
+.pb10{
+	color:#333;
+}
+/*横线*/
+.pwall{
+	border-bottom:1px solid #b8d4e8;
+	padding:3px;
+}
+.error{
+	margin:2px;
+	border:1px solid #dd3c10;
+	background:#ffebe8;
+}

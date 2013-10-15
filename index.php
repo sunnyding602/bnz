@@ -1,6 +1,7 @@
 <?php
 require_once('includes/config.php');
 require_once(SITE_ROOT_PATH.'includes/initialize.php');
+require_once ('jishuqi.php');
 
 
 $c = new SaeTClientV2( WB_AKEY , WB_SKEY , $_SESSION['token']['access_token'] );
@@ -12,6 +13,20 @@ $user_info['profile_image_url'];
 $_SESSION['user_id'] =  $user_info['screen_name'];
 $_SESSION['user_info_id'] = $user_info['screen_name'];
 $_SESSION['user_nickname'] = $user_info['screen_name'];
+
+
+  // If the session vars aren't set, try to set them with a cookie
+  if (!isset($_SESSION['user_id'])) {
+    if (isset($_COOKIE['user_id']) && isset($_COOKIE['user_nickname']) && isset($_COOKIE['user_info_id']) ) {
+      $_SESSION['user_id'] = $_COOKIE['user_id'];
+	  $_SESSION['user_info_id'] = $_COOKIE['user_info_id'];
+      $_SESSION['user_nickname'] = $_COOKIE['user_nickname'];
+    }
+  }
+
+$o = new SaeTOAuthV2( WB_AKEY , WB_SKEY );
+$code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +36,6 @@ $_SESSION['user_nickname'] = $user_info['screen_name'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-<?php
-require_once ('jishuqi.php');
-?>
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
@@ -315,24 +327,8 @@ if( isset($_SESSION['user_info_id']) ){
               </li>
             </ul>
 <!-- start login form-->
-<?php
-
-
-  // If the session vars aren't set, try to set them with a cookie
-  if (!isset($_SESSION['user_id'])) {
-    if (isset($_COOKIE['user_id']) && isset($_COOKIE['user_nickname']) && isset($_COOKIE['user_info_id']) ) {
-      $_SESSION['user_id'] = $_COOKIE['user_id'];
-	  $_SESSION['user_info_id'] = $_COOKIE['user_info_id'];
-      $_SESSION['user_nickname'] = $_COOKIE['user_nickname'];
-    }
-  }
-?>
-
 <form class="navbar-form pull-right" name="form1" method="post" action="login_index.php">
 <?php
-$o = new SaeTOAuthV2( WB_AKEY , WB_SKEY );
-$code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );
-
 
     if(false == isset($_SESSION['user_id'])){
         //上面是如果登陆之后.... 登陆逻辑如此奇葩..赶紧改吧     如果没有登陆
@@ -354,9 +350,6 @@ $code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );
         </div>
       </div>
     </div>
-
-  <?php
-?>
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
@@ -446,7 +439,7 @@ require_once ('announcement.php');
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2012 Bunengzhai.CN  &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; <?=date('Y')?> 不能宅.CN  &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
     </div><!-- /.container -->

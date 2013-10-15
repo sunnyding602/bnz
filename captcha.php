@@ -37,7 +37,7 @@
   }
 
   // Draw the pass-phrase string
-  imagettftext($img, 18, 0, 5, CAPTCHA_HEIGHT - 5, $text_color, 'comic.TTF', $pass_phrase);
+  imagettftext($img, 18, 0, 5, CAPTCHA_HEIGHT - 5, $text_color, './comic.ttf', $pass_phrase);
 
   // Output the image as a PNG using a header
   header("Content-type: image/png");
